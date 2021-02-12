@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands, tasks
 from discord.utils import get
+import os
 
 client = commands.Bot(command_prefix="--")
 
@@ -91,4 +92,4 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game("--help"))
 
 
-client.run('ODA5MzY1MjUzMDgyNDQ3ODg0.YCUCIQ.a9LY-kQ7WhTBl7Ige9OvyXL1UtE')
+client.run(os.environ['DISCORD_TOKEN'])
