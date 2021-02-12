@@ -74,6 +74,14 @@ async def project(ctx):
     }
     await takenGuild.create_text_channel(x, overwrites=overwrites, category=category)
 
+    overwrites2 = {
+        takenGuild.default_role: discord.PermissionOverwrite(read_messages=False, send_messages=False),
+        takenGuild.me: discord.PermissionOverwrite(read_messages=True, send_messages=True),
+        new_role: discord.PermissionOverwrite(
+            read_messages=True, send_messages=True)
+    }
+    await takenGuild.create_voice_channel(x, overwrites=overwrites2, category=category)
+
 
 @client.event
 async def on_reaction_add(reaction, user):
