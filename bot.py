@@ -33,8 +33,8 @@ async def project(ctx):
         title="CREATE A NEW PROJECT", color=0xff3838)
     myEmbed.add_field(name="Enter project name:",
                       value="EG: test-bot", inline=False)
-    myEmbed.add_field(name="Enter deadline:",
-                      value="EG: 12/02/21", inline=False)
+    #myEmbed.add_field(name="Enter deadline:",
+     #                 value="EG: 12/02/21", inline=False)
     myEmbed.add_field(name="React for roles:",
                       value="React with ✅ to gain access to isolated Text channel and VC.", inline=False)
     myEmbed.add_field(name="WARNING ⛔️",
