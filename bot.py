@@ -20,6 +20,13 @@ async def version(ctx):
     await ctx.message.channel.send(embed=myEmbed)
 
 
+@client.command(name='get_data')
+async def get_data(ctx):
+    data = ctx.guild.members
+    for i in data:
+        await ctx.message.channel.send(i)
+
+
 @client.command(name='project')
 async def project(ctx):
     global takenGuild
