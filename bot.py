@@ -12,7 +12,7 @@ async def version(ctx):
                             description="The bot is in v1.1", color=0xff3838)
     myEmbed.add_field(name="Version Code", value="v1.1.5", inline=False)
     myEmbed.add_field(name="Last Update",
-                      value="12/02/2021", inline=False)
+                      value="13/02/2021", inline=False)
     myEmbed.add_field(name="Date Released",
                       value="11/02/2021", inline=False)
     myEmbed.set_footer(text="Made with ❤️ by Kaustav M.")
@@ -31,11 +31,11 @@ async def project(ctx):
 
     myEmbed = discord.Embed(
         title="CREATE A NEW PROJECT", color=0xff3838)
-    myEmbed.add_field(name="Enter project name:",
+    myEmbed.add_field(name="1. Enter project name:",
                       value="EG: test-bot", inline=False)
-    #myEmbed.add_field(name="Enter deadline:",
-     #                 value="EG: 12/02/21", inline=False)
-    myEmbed.add_field(name="React for roles:",
+    # myEmbed.add_field(name="Enter deadline:",
+    #                 value="EG: 12/02/21", inline=False)
+    myEmbed.add_field(name="2. React on the embed for roles:",
                       value="React with ✅ to gain access to isolated Text channel and VC.", inline=False)
     myEmbed.add_field(name="WARNING ⛔️",
                       value="PLEASE DON'T REACT ON PROJECTS YOU'RE NOT A PART OF.", inline=False)
