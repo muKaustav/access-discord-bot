@@ -3,7 +3,9 @@ from discord.ext import commands, tasks
 from discord.utils import get
 import os
 
-client = commands.Bot(command_prefix="--")
+intents = discord.Intents.all()
+client = commands.Bot(command_prefix="--", intents=intents)
+#client = commands.Bot(command_prefix="--")
 
 
 @client.command(name='version')
