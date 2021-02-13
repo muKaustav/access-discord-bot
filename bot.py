@@ -54,7 +54,7 @@ async def project(ctx):
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
 
-    msg = await client.wait_for("message", check=check)
+    msg = await client.wait_for("message", timeout=60.0, check=check)
     inputs = msg.content.split()
 
     project_name.append(inputs[0])
