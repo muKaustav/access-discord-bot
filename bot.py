@@ -8,6 +8,33 @@ client = commands.Bot(command_prefix="--", intents=intents)
 #client = commands.Bot(command_prefix="--")
 
 
+@client.command(name='count')
+async def count(ctx, role: discord.Role):
+
+    depths = [[] for i in range(5)]
+    n = 0
+    for member in role.members:
+        if n <= 100:
+            depths[0].append(str(member))
+        elif n <= 200:
+            depths[1].append(str(member))
+        elif n <= 300:
+            depths[2].append(str(member))
+        elif n <= 200:
+            depths[3].append(str(member))
+        elif n <= 300:
+            depths[4].append(str(member))
+        n += 1
+
+    await ctx.send("List: ")
+
+    for i in depths:
+        if len(i) != 0:
+            await ctx.send(i)
+
+    await ctx.send("Number of users: " + str(n))
+
+
 @client.command(name='version')
 async def version(ctx):
     myEmbed = discord.Embed(title="Current Version",
