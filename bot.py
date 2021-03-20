@@ -35,13 +35,42 @@ async def count(ctx, role: discord.Role):
     await ctx.send("Number of users: " + str(n))
 
 
+@client.command(name='embed')
+async def embed(ctx, arg1, arg2, arg3, arg4, arg5):
+    if arg1 == "movie":
+
+        movieEmbed = discord.Embed(
+            title="MOVIE NIGHT  🎬",
+            color=15844367
+        )
+
+        movieEmbed.set_thumbnail(
+            url="https://cdn.discordapp.com/attachments/812229820938453022/822813081499467826/Untitled-1.png")
+
+        movieEmbed.set_image(
+            url=f"{arg5}"
+        )
+
+        movieEmbed.set_footer(text="KIIT FILM SOCIETY")
+
+        movieEmbed.add_field(
+            name=f"Tonight we're watching {arg2}!", value=f"Directed by {arg3}.", inline=False)
+
+        movieEmbed.add_field(
+            name="Hoping to see all of you there!", value=f"@ {arg4}!", inline=False)
+
+        # movieEmbed.add_field()
+
+    await ctx.send(embed=movieEmbed)
+
+
 @client.command(name='version')
 async def version(ctx):
     myEmbed = discord.Embed(title="Current Version",
-                            description="The bot is in v1.1", color=0xff3838)
-    myEmbed.add_field(name="Version Code", value="v1.1.5", inline=False)
+                            description="The bot is in v1.2", color=0xff3838)
+    myEmbed.add_field(name="Version Code", value="v1.2.1", inline=False)
     myEmbed.add_field(name="Last Update",
-                      value="13/02/2021", inline=False)
+                      value="20/03/2021", inline=False)
     myEmbed.add_field(name="Date Released",
                       value="11/02/2021", inline=False)
     myEmbed.set_footer(text="Made with ❤️ by Kaustav M.")
