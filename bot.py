@@ -2,10 +2,11 @@ import discord
 from discord.ext import commands, tasks
 from discord.utils import get
 import os
+from bs4 import BeautifulSoup
+import requests
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="--", intents=intents)
-#client = commands.Bot(command_prefix="--")
 
 
 @client.command(name='count')
@@ -35,6 +36,68 @@ async def count(ctx, role: discord.Role):
     await ctx.send("Number of users: " + str(n))
 
 
+@client.command(name="recc")
+async def recc(ctx, arg1):
+
+    if arg1 == "short":
+        source = source = requests.get(
+            f'https://www.imdb.com/search/title/?genres=short&title_type=feature&explore=genres').text
+    elif arg1 == "noir":
+        source = source = requests.get(
+            f'https://www.imdb.com/search/title/?genres=film-noir&title_type=feature&explore=genres').text
+    else:
+        source = requests.get(
+            f'https://www.imdb.com/search/title/?genres={arg1.lower()}&title_type=feature&explore=genres').text
+
+    soup = BeautifulSoup(source, 'lxml')
+
+    global movies_names, movie_title, img_src
+
+    movies_names = []
+    movie_title = []
+    img_src = []
+
+    for item in soup.find_all('div', class_='lister-item-content'):
+        movies_names.append(item.find('a').text)
+
+    for movie in soup.find_all('h3', class_="lister-item-header"):
+        for title in movie.find_all('a', href=True):
+            movie_title.append(title['href'].split("/")[2])
+
+    for i in range(5):
+
+        img_source = requests.get(
+            f'https://www.imdb.com/title/{movie_title[i]}/?ref_=adv_li_i').text
+
+        img_soup = BeautifulSoup(img_source, 'html.parser')
+
+        for image in img_soup.find_all('div', class_="poster"):
+            img_src.append(image.find('img')['src'])
+
+    global reccEmbed
+
+    for k in range(5):
+
+        reccEmbed = discord.Embed(
+            title=f"TOP 5 RECENT\nRECCOMENDATIONS\nFOR {arg1.upper()} FROM IMDB",
+            color=15158332
+        )
+
+        reccEmbed.set_thumbnail(
+            url="https://cdn.discordapp.com/attachments/812229820938453022/822813081499467826/Untitled-1.png")
+
+        reccEmbed.set_image(
+            url=img_src[k]
+        )
+
+        reccEmbed.set_footer(text="KIIT FILM SOCIETY")
+
+        reccEmbed.add_field(
+            name=str(k+1) + ". " + movies_names[k], value="Give it a watch!", inline=False)
+
+        await ctx.send(embed=reccEmbed)
+
+
 @client.command(name='embed')
 async def embed(ctx, arg1, arg2, arg3, arg4, arg5):
     if arg1 == "movie":
@@ -58,8 +121,6 @@ async def embed(ctx, arg1, arg2, arg3, arg4, arg5):
 
         movieEmbed.add_field(
             name="Hoping to see all of you there!", value=f"@ {arg4}!", inline=False)
-
-        # movieEmbed.add_field()
 
     await ctx.send(embed=movieEmbed)
 
@@ -89,17 +150,15 @@ async def get_data(ctx):
 async def project(ctx):
     global takenGuild
     takenGuild = client.get_guild(809275451322269728)
-    # takenGuild = ctx.message.channel.guild
+
     global category
     category = client.get_channel(809286493272801290)
-    # category = ctx.message.channel.category
 
     myEmbed = discord.Embed(
         title="CREATE A NEW PROJECT", color=0xff3838)
     myEmbed.add_field(name="1. Enter project name:",
                       value="EG: test-bot", inline=False)
-    # myEmbed.add_field(name="Enter deadline:",
-    #                 value="EG: 12/02/21", inline=False)
+
     myEmbed.add_field(name="2. React on the embed for roles:",
                       value="React with ✅ to gain access to isolated Text channel and VC.", inline=False)
     myEmbed.add_field(name="WARNING ⛔️",
@@ -113,8 +172,6 @@ async def project(ctx):
     reaction_message_id = str(msg.id)
 
     project_name = []
-    # project_deadline = []
-    # project_users = []
 
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel
@@ -125,10 +182,6 @@ async def project(ctx):
     project_name.append(inputs[0])
     global x
     x = inputs[0]
-    # project_deadline.append(inputs[1])
-    # # y = inputs[0]
-    # project_users.append(inputs[2])
-    # z = inputs[0]
 
     await takenGuild.create_role(name=x)
     new_role = get(ctx.guild.roles, name=x)
