@@ -165,7 +165,7 @@ async def project(ctx):
                       value="PLEASE DON'T REACT ON PROJECTS YOU'RE NOT A PART OF.", inline=False)
     myEmbed.set_footer(text="Made with ❤️ by Kaustav M.")
 
-    msg = await ctx.send(embed=myEmbed)
+    msg = await ctx.send(embed=myEmbed, delete_after=60.0)
     await msg.add_reaction('✅')
 
     global reaction_message_id
