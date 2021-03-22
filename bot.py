@@ -152,7 +152,7 @@ async def project(ctx):
     takenGuild = client.get_guild(711418582302720084)
 
     global category
-    category = client.get_channel(822733872634265650)
+    category = client.get_channel(822733836122062849)
 
     myEmbed = discord.Embed(
         title="CREATE A NEW PROJECT", color=0xff3838)
