@@ -16,10 +16,9 @@ async def pepe(ctx, arg1):
     url = "https://raw.githubusercontent.com/muKaustav/access-discord-bot/main/emoji.csv"
     df = pd.read_csv(url, sep=",")
 
-    for line in df['SRC']:
-        if str(arg1).lower() in line.lower():
-            x = line.split(",")
-            await ctx.send(x[0])
+    for index, row in df.iterrows():
+        if str(arg1).lower() in row['ALT']:
+            await ctx.send(row['SRC'])
             break
 
 
