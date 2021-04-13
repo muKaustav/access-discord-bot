@@ -6,5 +6,5 @@ Gone are the days of creating private roles, numerous text and voice channels an
 **Updates:**
 1.  Make Movie Night embeds with only 5 arguments.
 2. Get **Top 5** (can be changed from source code) movie recommendations from IMDb, user gives genre (which are present in IMDb) in argument.
-
+3. Custom Emojis and GIFs added. Updated periodically.
 
