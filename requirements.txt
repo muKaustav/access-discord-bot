@@ -1,4 +1,5 @@
 discord
 bs4
+pandas
 requests
 lxml
