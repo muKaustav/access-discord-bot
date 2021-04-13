@@ -13,7 +13,7 @@ client = commands.Bot(command_prefix="--", intents=intents)
 @client.command(name='e')
 async def pepe(ctx, arg1):
 
-    url = "https://raw.githubusercontent.com/muKaustav/access-discord-bot/main/emoji.csv"
+    url = "DB"
     df = pd.read_csv(url, sep=",")
 
     for index, row in df.iterrows():
