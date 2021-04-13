@@ -17,7 +17,7 @@ async def pepe(ctx, arg1):
     df = pd.read_csv(url, sep=",")
 
     for index, row in df.iterrows():
-        if str(arg1).lower() in row['ALT']:
+        if str(arg1).lower() in row['ALT'].lower():
             await ctx.send(row['SRC'])
             break
 
