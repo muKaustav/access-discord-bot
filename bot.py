@@ -13,6 +13,27 @@ client = commands.Bot(command_prefix="--", intents=intents)
 @client.command(name='e')
 async def pepe(ctx, arg1):
 
+    if arg1 == "help":
+
+        helpEmoji = discord.Embed(
+            title="Emoji Reference 🧾",
+            color=15844367
+        )
+
+        helpEmoji.set_thumbnail(
+            url="https://cdn.discordapp.com/attachments/711418583426793503/834143696369745970/2.png")
+
+        helpEmoji.set_image(
+            url="https://cdn.discordapp.com/attachments/711418583426793503/834145616375709707/access.jpg"
+        )
+
+        helpEmoji.set_footer(text="{Access.}")
+
+        helpEmoji.add_field(
+            name="Check out the ever updating list ༼ つ ◕_◕ ༽つ", value="https://github.com/muKaustav/access-discord-bot/blob/main/emoji.csv", inline=False)
+
+        await ctx.send(embed=helpEmoji)
+
     url = "https://raw.githubusercontent.com/muKaustav/access-discord-bot/main/emoji.csv"
     df = pd.read_csv(url, sep=",")
 
