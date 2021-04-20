@@ -12,7 +12,6 @@ client = commands.Bot(command_prefix="--", intents=intents)
 
 @client.command(name='e')
 async def pepe(ctx, arg1):
-
     if arg1 == "help":
 
         helpEmoji = discord.Embed(
@@ -34,11 +33,11 @@ async def pepe(ctx, arg1):
 
         await ctx.send(embed=helpEmoji)
 
-    url = "https://raw.githubusercontent.com/muKaustav/access-discord-bot/main/emoji.csv"
+    url = os.environ['DB']
     df = pd.read_csv(url, sep=",")
 
     for index, row in df.iterrows():
-        if str(arg1).lower() in row['ALT']:
+        if str(arg1).lower() in row['ALT'].lower():
             await ctx.send(row['SRC'])
             break
 

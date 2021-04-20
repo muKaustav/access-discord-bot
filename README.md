@@ -4,7 +4,7 @@ During these **WFH** (Work From Home) times, Discord helps to collaborate and ex
 Gone are the days of creating private roles, numerous text and voice channels and setting up permissions for them, **Access.** does it all for you.
 
 **Updates:**
-1.  Make Movie Night embeds with only 5 arguments.
+1. Make Movie Night embeds with only 5 arguments.
 2. Get **Top 5** (can be changed from source code) movie recommendations from IMDb, user gives genre (which are present in IMDb) in argument.
-
+3. Custom Emojis and GIFs added. Updated periodically.
 
