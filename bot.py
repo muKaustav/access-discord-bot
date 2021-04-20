@@ -23,7 +23,7 @@ async def pepe(ctx, arg1):
             url="https://cdn.discordapp.com/attachments/711418583426793503/834143696369745970/2.png")
 
         helpEmoji.set_image(
-            url="https://cdn.discordapp.com/attachments/711418583426793503/834145616375709707/access.jpg"
+            url="https://cdn.discordapp.com/attachments/711418583426793503/834150092679938048/emoji.jpg"
         )
 
         helpEmoji.set_footer(text="{Access.}")
