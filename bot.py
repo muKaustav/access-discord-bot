@@ -66,7 +66,7 @@ async def kd(ctx, arg1, arg2):
         kd = float((list(item[17]))[0][1:-1])
 
         r6Stats = discord.Embed(
-            title="KD and HS" + "%" + " for CS:GO",
+            title="KD and HS" + "%" + " for R6S",
             color=15844367
         )
 
