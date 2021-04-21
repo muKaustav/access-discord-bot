@@ -31,7 +31,7 @@ async def kd(ctx, arg1, arg2):
         hs = round(hs * 100, 2)
 
         csgoStats = discord.Embed(
-            title="KD and HS" + "%" + " for CS:GO",
+            title="KD and HS" + "%" + " for R6S",
             color=15844367
         )
 
