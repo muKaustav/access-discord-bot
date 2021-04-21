@@ -10,6 +10,84 @@ intents = discord.Intents.all()
 client = commands.Bot(command_prefix="--", intents=intents)
 
 
+@client.command(name="kd")
+async def kd(ctx, arg1, arg2):
+
+    if arg1 == "csgo":
+
+        url = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=5906EE49D7596BE5FB0814040D97DED7&steamid=" + \
+            str(arg2)
+
+        source = requests.get(url).json()
+
+        kd = source['playerstats']['stats'][0]['value'] / \
+            source['playerstats']['stats'][1]['value']
+
+        kd = round(kd, 2)
+
+        hs = source['playerstats']['stats'][24]['value'] / \
+            source['playerstats']['stats'][0]['value']
+
+        hs = round(hs * 100, 2)
+
+        csgoStats = discord.Embed(
+            title="KD and HS" + "%" + " for CS:GO",
+            color=15844367
+        )
+
+        csgoStats.set_thumbnail(
+            url="https://cdn.discordapp.com/attachments/711418583426793503/834143696369745970/2.png")
+
+        csgoStats.set_image(
+            url="https://d1lss44hh2trtw.cloudfront.net/assets/editorial/2020/02/iem-katowice-will-not-allow-audience-attendance-due-to-coronavirus-concerns-what-it-will-look-like.jpg"
+        )
+
+        csgoStats.set_footer(text="{Access.}")
+
+        csgoStats.add_field(
+            name="KD", value=kd)
+
+        csgoStats.add_field(
+            name="HS%", value=hs)
+
+        await ctx.send(embed=csgoStats)
+
+    elif arg1 == "r6s":
+
+        ubi = "https://r6.tracker.network/profile/pc/" + str(arg2)
+
+        source = requests.get(ubi).text
+
+        soup = BeautifulSoup(source, 'html5lib')
+
+        item = soup.find_all('div', class_="trn-defstat__value")
+
+        hs = float((list(item[16]))[0][1:-2])
+        kd = float((list(item[17]))[0][1:-1])
+
+        r6Stats = discord.Embed(
+            title="KD and HS" + "%" + " for CS:GO",
+            color=15844367
+        )
+
+        r6Stats.set_thumbnail(
+            url="https://cdn.discordapp.com/attachments/711418583426793503/834143696369745970/2.png")
+
+        r6Stats.set_image(
+            url="https://esportsobserver.com/wp-content/uploads/2020/02/Top-Twitch-Channels-Feb10-16.jpg"
+        )
+
+        r6Stats.set_footer(text="{Access.}")
+
+        r6Stats.add_field(
+            name="KD", value=kd)
+
+        r6Stats.add_field(
+            name="HS%", value=hs)
+
+        await ctx.send(embed=r6Stats)
+
+
 @client.command(name='e')
 async def pepe(ctx, arg1):
     if arg1 == "help":
