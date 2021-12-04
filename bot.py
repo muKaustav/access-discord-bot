@@ -231,7 +231,7 @@ async def embed(ctx, arg1, arg2, arg3, arg4, arg5):
             name=f"Tonight we're watching {arg2}!", value=f"Directed by {arg3}.", inline=False)
 
         movieEmbed.add_field(
-            name="Hoping to see all of you there!", value=f"@ {arg4}!", inline=False)
+            name="Hoping to see all of you there!", value=f"@ {arg4}.", inline=False)
 
     await ctx.send(embed=movieEmbed)
 
